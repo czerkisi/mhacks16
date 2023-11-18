@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-api": "cd api && (if \"%OS%\" == \"Windows_NT\" (venv\\Scripts\\activate) else (source venv/bin/activate)) && flask run --no-debugger",
+    "start-api": "cd api && (if [ \"$OS\" == \"Windows_NT\" ]; then venv\\Scripts\\activate; else source venv/bin/activate; fi) && flask run --no-debugger",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
