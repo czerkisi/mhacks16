@@ -1,29 +1,21 @@
-import React, { useRef, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { TileLayer , MapContainer , Marker , Popup } from "react-leaflet"
+import "leaflet/dist/leaflet.css";
+import './Map.css';
 
-const MoveableMap: React.FC = () => {
-    const mapRef = useRef<typeof MapContainer>(null);
-    const [center, setCenter] = useState<{ lat: number; lng: number }>({ lat: 37.7749, lng: -122.4194 });
-    const [zoom, setZoom] = useState(13);
 
-    const handleMarkerDragEnd = (event: Leaflet.LeafletMouseEvent) => {
-        const { lat, lng } = event.target.getLatLng();
-        setCenter({ lat, lng });
-    };
-
+export default function Map() {
     return (
-        <MapContainer ref={mapRef} center={center} zoom={zoom}>
+        <MapContainer center={[40.69816148071831, -73.93802961687618]} zoom={ 11 } scrollWheelZoom={false}>
             <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={center} draggable={true} onDragend={handleMarkerDragEnd}>
+
+            <Marker position={[34.0522, -118.2437]}>
                 <Popup>
-                    This is a moveable marker. You can drag and drop it to change its location.
+                    Los Angeles
                 </Popup>
             </Marker>
         </MapContainer>
-    );
-};
-
-export default MoveableMap;
+    )
+}
