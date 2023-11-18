@@ -23,7 +23,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-api": "sh start-api.sh || start-api.bat",
+    "start-apiw": "cd api && call venv\\Scripts\\activate && flask run --no-debugger",
+    "start-apim": "cd api && source venv/bin/activate && flask run --no-debugger",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
