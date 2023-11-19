@@ -1,7 +1,5 @@
 import './Home.css';
-import {useAppSelector} from "../../store/hooks";
-import {useEffect, useState} from "react";
-import {setSelectedPins} from "../../store/slices/pinsSlice";
+
 import Map from "../Map/Map";
 import List from "../List/List";
 import Banner from "../Banner/Banner";

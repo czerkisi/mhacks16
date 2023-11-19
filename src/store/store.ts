@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import pinsSlice from "./slices/pinsSlice";
+import pinsSlice from "./slices/propertiesSlice";
+import filterSlice from "./slices/filterSlice";
 
 const store = configureStore({
     reducer: {
-        pins: pinsSlice
+        properties: pinsSlice,
+        filter: filterSlice
     },
 })
 

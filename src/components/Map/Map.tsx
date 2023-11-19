@@ -1,46 +1,71 @@
-import {TileLayer, MapContainer, useMap} from "react-leaflet"
+import { TileLayer, MapContainer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import './Map.css';
-import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import { useAppSelector } from "../../store/hooks";
 import L, { LatLngExpression } from 'leaflet';
-import CustomPin from "../CustomPin/CustomPin";
+import React, { useEffect, useState } from "react";
+import CustomPropertyPin from "../CustomPropertyPin/CustomPropertyPin";
 
-function CustomMap() {
-    const pins = useAppSelector(state => state.pins.selectedPins);
+function CustomMap({ properties }: { properties: Property[] }) {
     const map = useMap();
 
-    // Convert pin coordinates to LatLngExpression[]
-    const pinLatLngs: LatLngExpression[] = pins.map(pin => [pin.latitude, pin.longitude]);
+    // Convert property coordinates to LatLngExpression[]
+    const propertyLatLngs: LatLngExpression[] = properties.map(property => [property.latitude, property.longitude]);
 
-    // Create a LatLngBounds object from pin coordinates
-    const bounds = L.latLngBounds(pinLatLngs);
+    // Create a LatLngBounds object from property coordinates
+    const bounds = L.latLngBounds(propertyLatLngs);
 
-    // Fit the map to the bounds of all pins
+    // Fit the map to the bounds of all properties
     map.fitBounds(bounds);
 
     return null; // This component doesn't render anything, it just manages the map state
 }
 
+interface Property {
+    uid: string;
+    latitude: number;
+    longitude: number;
+}
+
 function Map() {
-    const pins = useAppSelector(state => state.pins.selectedPins);
+    const properties = useAppSelector(state => state.properties.selectedProperties);
+    const selectedProperty = useAppSelector(state => state.filter.selectedProperty);
+    const initialPosition: [number, number] = [40.69816148071831, -73.93802961687618];
+    const initialZoom = 11;
+    const [position, setPosition] = useState<[number, number]>(initialPosition);
+    const [zoom, setZoom] = useState(initialZoom);
+
+    useEffect(() => {
+        if (selectedProperty === null) {
+            setPosition(initialPosition);
+            setZoom(initialZoom);
+        } else {
+            const newPosition: [number, number] = [selectedProperty.latitude, selectedProperty.longitude];
+            setPosition(newPosition);
+            setZoom(15);
+        }
+    }, [selectedProperty]);
+
+    const key = selectedProperty ? selectedProperty.uid : 'customMap';
 
     return (
-        <MapContainer center={[40.69816148071831, -73.93802961687618]} zoom={11} scrollWheelZoom={false}>
+        <MapContainer key={key} center={position} zoom={zoom} scrollWheelZoom={false}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            {pins.map((pin) => (
-                <CustomPin
-                    key={pin.uid}
-                    position={[pin.latitude, pin.longitude]}
-                    onClick={() => console.log("Pin clicked!")}
+            {properties.map((property) => (
+                <CustomPropertyPin
+                    key={property.uid}
+                    property={property}
+                    onClick={() => console.log("Property clicked!")}
                 />
             ))}
 
-            {/* Include the CustomMap component */}
-            <CustomMap />
+            {selectedProperty === null ? (
+                <CustomMap properties={properties} />
+            ) : null}
         </MapContainer>
     );
 }

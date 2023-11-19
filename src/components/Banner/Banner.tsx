@@ -1,4 +1,5 @@
 import './Banner.css';
+import AddressSearch from "../AddressSearch/AddressSearch";
 
 export default function Banner(){
     return (
@@ -9,6 +10,7 @@ export default function Banner(){
                 <span className={'mission-statement white-text'}> Tomorrow</span>
             </div>
             <span className={'secondary-mission-statement white-text'}>building sustainable futures, one property at a time.</span>
+            <AddressSearch/>
         </div>
     );
 }

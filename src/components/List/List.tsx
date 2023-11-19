@@ -1,33 +1,36 @@
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {useEffect, useState} from "react";
-import {setSelectedPins} from "../../store/slices/pinsSlice";
-import PinPreview from "../PinPreview/PinPreview";
+import {setSelectedProperties} from "../../store/slices/propertiesSlice";
+import PropertyPreview from "../PropertyPreview/PropertyPreview";
+import './List.css';
 
 export default function List(){
     const dispatch = useAppDispatch();
     const pageSize = 25;
-    const allPins = useAppSelector(state => state.pins.allPins);
-    const selectedPins = useAppSelector(state => state.pins.selectedPins);
+    const allProperties = useAppSelector(state => state.properties.allProperties);
+    const selectedProperties = useAppSelector(state => state.properties.selectedProperties);
     const [index, setIndex] = useState(0);
     const [maxIndex, setMaxIndex] = useState(0);
 
     useEffect(() => {
-        const selected = allPins.slice(index * pageSize, Math.min(allPins.length, (index + 1) * pageSize));
+        const selected = allProperties.slice(index * pageSize, Math.min(allProperties.length, (index + 1) * pageSize));
         console.log(selected);
-        dispatch(setSelectedPins(selected));
+        dispatch(setSelectedProperties(selected));
         console.log('set selected');
-    }, [allPins, index]);
+    }, [allProperties, index]);
 
     useEffect(() => {
-        setMaxIndex(Math.ceil(allPins.length / pageSize));
-    }, [allPins]);
+        setMaxIndex(Math.ceil(allProperties.length / pageSize));
+    }, [allProperties]);
 
     return (
         <div>
-            {selectedPins.map(pin => {
-                return <PinPreview key={pin.uid} pin={pin}/>;
-                }
-            )}
+            <div className={'property-list'}>
+                {selectedProperties.map(property => {
+                        return <PropertyPreview key={property.uid} property={property}/>;
+                    }
+                )}
+            </div>
         </div>
     );
 }

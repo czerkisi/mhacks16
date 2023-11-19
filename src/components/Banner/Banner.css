@@ -1,6 +1,5 @@
 .mission-statement {
     /* investing in a greener tomorrow building sustainable futures, one property at a time. */
-    font-family: 'Helvetica', serif;
     font-style: normal;
     font-weight: 700;
     font-size: 80px;
@@ -18,7 +17,6 @@
 }
 
 .secondary-mission-statement {
-    font-family: 'Helvetica', serif;
     font-style: normal;
     font-size: 30px;
 }
