@@ -8,3 +8,18 @@
 .search-results-label{
     padding:10px;
 }
+.clear-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border: 1px solid #555;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.clear-button:hover {
+    background-color: rgb(77, 77, 77);
+    cursor: pointer;
+}

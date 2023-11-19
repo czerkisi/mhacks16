@@ -118,8 +118,6 @@ API_KEY = "AIzaSyCemo-YZEd0EWrbat0G8g2XjUrX3ZvcdZk"
 
 
 def return_nearest_scores(location, k):
-    location = "NY Moore Hostel, Moore Street, Brooklyn, NY" # Replace with your location
-    k = 10 # Number of nearest locations to find
     return find_nearest_locations(API_KEY, location, sustainability_scores, k)
 
     

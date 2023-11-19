@@ -1,0 +1,24 @@
+.grade-circle-container {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    position: relative; /* Add position relative to the container */
+}
+
+.grade-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute; /* Add position absolute to position the text over the circle */
+}
+
+.grade-circle-letter {
+    z-index: 1;
+    position: relative; /* Add position relative to allow z-index to work */
+}

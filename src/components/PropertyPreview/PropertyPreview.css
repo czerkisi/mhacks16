@@ -1,19 +1,18 @@
+.property-preview-container {
+    display: flex;
+    border-bottom: 2px solid #888;
+}
+
 .property-preview {
-    border: 2px solid #888;
-    border-radius: 10px;
     padding: 10px;
-    margin: 15px;
-    width: calc(100% - 54px);
-    background-color: #333;
+    width: 65%;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
-.property-preview:hover {
-    background-color: #444; /* Adjust the hover background color as needed */
+.property-title {
+    font-weight: bold;
 }
 
-.property-preview span {
-    display: block;
-    margin-bottom: 8px;
-}

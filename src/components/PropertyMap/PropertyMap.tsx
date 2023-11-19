@@ -2,11 +2,7 @@ import { TileLayer, MapContainer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import './Map.css';
 import { useAppSelector } from "../../store/hooks";
-import L, {
-    LatLngBounds,
-    LatLngExpression,
-    Map
-} from 'leaflet';
+import L, { LatLngExpression } from 'leaflet';
 import React, { useEffect, useState } from "react";
 import CustomPropertyPin from "../CustomPropertyPin/CustomPropertyPin";
 
@@ -22,7 +18,9 @@ function CustomMap({ properties }: { properties: Property[] }) {
     // Fit the map to the bounds of all properties when it's ready
     useEffect(() => {
         map.whenReady(() => {
-            map.fitBounds(bounds);
+            if (bounds.isValid()){
+                map.fitBounds(bounds);
+            }
         });
     }, [map, bounds]);
 
@@ -38,6 +36,8 @@ interface Property {
 function PropertyMap() {
     const properties = useAppSelector(state => state.properties.selectedProperties);
     const selectedProperty = useAppSelector(state => state.filter.selectedProperty);
+    const selectedProperties = useAppSelector(state => state.properties.selectedProperties);
+    const shuffledProperties = useAppSelector(state => state.properties.shuffledProperties);
     const initialPosition: [number, number] = [40.69816148071831, -73.93802961687618];
     const initialZoom = 11;
     const [position, setPosition] = useState<[number, number]>(initialPosition);
@@ -53,13 +53,19 @@ function PropertyMap() {
         } else {
             const newPosition: [number, number] = [selectedProperty.latitude, selectedProperty.longitude];
             setPosition(newPosition);
-            setZoom(15);
+            setZoom(19);
 
             setTimeout(() => {
                 setCounter(counter + 1);
             }, 25);
         }
     }, [selectedProperty]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setCounter(counter + 1);
+        }, 25);
+    }, [shuffledProperties, selectedProperties]);
 
     return (
         <MapContainer key={counter} center={position} zoom={zoom} scrollWheelZoom={false}>

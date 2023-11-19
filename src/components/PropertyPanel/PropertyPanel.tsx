@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './PropertyPanel.css';
-import {Property} from "../../store/slices/propertiesSlice";
+import {calculateGrade, curveGrade, Property} from "../../store/slices/propertiesSlice";
 
 interface PropertyPanelProps {
     clearProperty: () => void;
@@ -27,9 +27,22 @@ const PropertyPanel: React.FC<PropertyPanelProps> = (props) => {
                 {'>'}
             </button>
 
-            <div className="content">
-                <p>{`Property: ${property.title}`}</p>
+            <div className="panel-content">
+                <h3><strong>{`Selected Property:`}</strong> {property.title}</h3>
+                <h1>Primary Info</h1>
+                <span><strong>{`Address:`}</strong> {property.address}</span>
+                <span><strong>{`Type:`}</strong> {property.type}</span>
+                <span><strong>{`Unique ID:`}</strong> {property.uid}</span>
+                <span><strong>{`Coordinates:`}</strong> [{property.latitude}, {property.longitude}]</span>
+                <h1>Weighting Info</h1>
+                <span><strong>{`Energy Star Score:`}</strong> {property.energyStar}</span>
+                <span><strong>{`Percent of Electricity Used that's Generated on Site:`}</strong> {property.percentElecOnsite}</span>
+                <span><strong>{`Site EUI in kBTU/sqft:`}</strong> {property.siteEui}</span>
+                <span><strong>{`Source EUI in kBTU/sqft:`}</strong> {property.sourceEui}</span>
+                <span><strong>{`Total Green House Gas Emissions in Metric Tons:`}</strong> {property.totalghg}</span>
+                <span><strong>{`ESG Score:`}</strong> {curveGrade(property.score).toFixed(2)} ({calculateGrade(property.score)})</span>
             </div>
+
         </div>
     );
 };

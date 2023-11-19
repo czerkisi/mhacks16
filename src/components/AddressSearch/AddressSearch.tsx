@@ -88,7 +88,7 @@ const AddressSearch: React.FC = () => {
                     }
                 }}
             />
-            <button onClick={submitAddress}>Search</button>
+            {/*<button onClick={submitAddress}>Search</button>*/}
             <div className="results-list">
                 {isLoading &&
                     <span className={'loading'}>Loading...</span>

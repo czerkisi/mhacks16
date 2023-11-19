@@ -1,0 +1,27 @@
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #191919;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 90%;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-links {
+    display: flex;
+    flex-direction: row;
+}
+
+.logo-img {
+    margin-top: 20px;
+    height: 60px;
+}
+.website-title{
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+}

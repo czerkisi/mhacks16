@@ -9,9 +9,29 @@
 .half-height {
     flex: 1; /* Each half-height section takes up half of the available space */
     display: flex;
+    flex-direction: column;
+}
+
+.bottom-overlay {
+    width: 90%;
+    border: 2px white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    background-color: #191919;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 20px;
 }
 
 /* Styling for the half-width sections within the second half-height section */
 .half-width {
     flex: 1; /* Each half-width section takes up half of the available space */
+}
+
+.filter-list-container {
+    width: 65%;
+}
+.div-map-container {
+    width: 35%
 }

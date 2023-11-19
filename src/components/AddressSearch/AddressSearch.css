@@ -1,12 +1,21 @@
 .address-search {
     position: relative;
-    width: 300px; /* Adjust the width as needed */
+    width: 500px; /* Adjust the width as needed */
 }
 
 .address-input {
     width: 100%;
-    padding: 8px;
+    padding: 16px;
     font-size: 16px;
+    border-radius: 25px;
+    border: solid white 2px;
+    background: none;
+    color: white;
+
+}
+
+.address-input:focus{
+    outline: none;
 }
 
 .loading {
@@ -16,9 +25,10 @@
 }
 
 .no-suggestions {
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     font-family: 'Helvetica', serif;
+    background-color: black;
 }
 
 .results-list {

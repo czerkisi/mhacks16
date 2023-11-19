@@ -1,0 +1,40 @@
+/* Style for the dropdown container */
+.drop {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: black;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 200px; /* Adjust the width as needed */
+}
+
+/* Style for the dropdown arrow */
+.drop::after {
+    content: '\25BC'; /* Unicode character for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Style for the options in the dropdown */
+.drop option {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Style for the dropdown when it's open */
+.drop:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover effect for the options */
+.drop option:hover {
+    background-color: #555;
+}

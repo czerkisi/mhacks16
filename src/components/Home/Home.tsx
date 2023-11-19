@@ -3,6 +3,8 @@ import './Home.css';
 import PropertyMap from "../PropertyMap/PropertyMap";
 import List from "../List/List";
 import Banner from "../Banner/Banner";
+import React from "react";
+import Header from "../Header/Header";
 
 export default function Home(){
     return (
@@ -10,11 +12,11 @@ export default function Home(){
             <div className={'half-height'}>
                 <Banner/>
             </div>
-            <div className={'half-height'}>
-                <div className={'half-width'}>
+            <div className={'bottom-overlay'}>
+                <div className={'filter-list-container'}>
                     <List/>
                 </div>
-                <div className={'half-width'}>
+                <div className={'div-map-container'}>
                     <PropertyMap/>
                 </div>
             </div>

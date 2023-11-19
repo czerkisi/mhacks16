@@ -24,6 +24,9 @@
     right: 10px;
 }
 
-.content {
+.panel-content {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
 }
