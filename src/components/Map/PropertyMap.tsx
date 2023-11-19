@@ -57,7 +57,7 @@ function PropertyMap() {
 
             setTimeout(() => {
                 setCounter(counter + 1);
-            }, 50);
+            }, 25);
         }
     }, [selectedProperty]);
 
