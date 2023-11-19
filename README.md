@@ -1,5 +1,6 @@
 # greenr
 <img width="944" alt="Screenshot of Greenr" src="https://github.com/czerkisi/mhacks16/assets/93162463/60ec8af9-05eb-42c4-a7c2-d29e859c7fd5">
+
 ## Inspiration
 The inspiration for this project stems from a growing global awareness and concern for environmental sustainability, particularly in urban settings. In a world grappling with climate change and resource depletion, there is an increasing need for tools that can help individuals and organizations make informed decisions about property usage and investments. By providing accessible and comprehensive environmental metrics for properties, Greenr aims to empower users with the knowledge to make choices that are not only beneficial for them but also for the planet.
 
