@@ -40,7 +40,7 @@ const PropertyPanel: React.FC<PropertyPanelProps> = (props) => {
                 <span><strong>{`Site EUI in kBTU/sqft:`}</strong> {property.siteEui}</span>
                 <span><strong>{`Source EUI in kBTU/sqft:`}</strong> {property.sourceEui}</span>
                 <span><strong>{`Total Green House Gas Emissions in Metric Tons:`}</strong> {property.totalghg}</span>
-                <span><strong>{`ESG Score:`}</strong> {curveGrade(property.score).toFixed(2)} ({calculateGrade(property.score)})</span>
+                <span><strong>{`ESG Score:`}</strong> {curveGrade(property.score).toFixed(2)} ({calculateGrade(curveGrade(property.score))})</span>
                 <br/>
                 <span>Data courtesy of https://data.cityofnewyork.us/Environment/Energy-and-Water-Data-Disclosure-for-Local-Law-84-/usc3-8zwd</span>
             </div>
