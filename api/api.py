@@ -13,8 +13,9 @@ def get_score():
     if 'location' in data and 'k' in data: 
         param_value=data['location']
         k_value = data['k']
-        nearest_k = script.return_nearest_scores(param_value, k_value) 
-        return jsonify({'nearest_k': nearest_k})
+        nearest_k = script.return_nearest_scores(param_value, k_value)
+        nearest_k_dict = nearest_k.to_dict(orient='records')
+        return jsonify(nearest_k_dict)
 
 @app.route('/test')
 def hello_world():
