@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from 'uuid';
+import axios from "axios/index";
 
 export interface Property {
     uid: string;
@@ -10,54 +11,42 @@ export interface Property {
     address: string;
 }
 
+export async function getPropertiesByAddress(address: string, count: number){
+    const properties: Property[] = [];
+
+    const getScoreBody = {
+        location: address,
+        k: count,
+    };
+    axios.post('/score', getScoreBody)
+        .then(response => {
+            const data = response.data;
+            console.log('Response:', response.data);
+
+            const nyGovEndpoint = 'https://data.cityofnewyork.us/resource/usc3-8zwd.json';
+
+            const nyGovBody = {
+                property_id: 7365,
+            }
+
+            axios.post(nyGovEndpoint, nyGovBody)
+                .then(response => {
+                    const data = response.data;
+                    console.log('Response:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+    });
+}
+
 interface PropertiesState {
     allProperties: Property[];
     selectedProperties: Property[]; // Array of selected Properties
 }
 
 const initialState: PropertiesState = {
-    allProperties: [
-        {
-            "uid": "c4a5b4f3-1a2b-4c6d-8e9f-0g1h2i3j4k5l",
-            "title": "Goldman Sachs",
-            "latitude": 40.768731,
-            "longitude": -73.981715,
-            "type": "Office",
-            "address": "123 Park Avenue, Manhattan, NY"
-        },
-        {
-            "uid": "d5e6f7g8-2h3i-4j5k-6l7m-8n9o0p1q2r3",
-            "title": "Hampton Inn",
-            "latitude": 40.732195,
-            "longitude": -74.002724,
-            "type": "Hotel",
-            "address": "456 Washington Square, Manhattan, NY"
-        },
-        {
-            "uid": "s4t5u6v7-w8x9y0z1-2a3b-4c5d-6e7f8g9h0i1",
-            "title": "K-12 School",
-            "latitude": 40.758896,
-            "longitude": -73.985130,
-            "type": "School",
-            "address": "789 Broadway, Manhattan, NY"
-        },
-        {
-            "uid": "j2k3l4m5-n6o7p8q9-0r1s2t3u4-5v6w7x8y9z0",
-            "title": "Nike Store",
-            "latitude": 40.774123,
-            "longitude": -73.960789,
-            "type": "Store",
-            "address": "101 Lexington Avenue, Manhattan, NY"
-        },
-        {
-            "uid": "a1b2c3d4-e5f6g7h8-i9j0k1l2-m3n4o5p6q7",
-            "title": "St. John's",
-            "latitude": 40.717454,
-            "longitude": -74.013444,
-            "type": "Hospital",
-            "address": "202 Battery Place, Manhattan, NY"
-        }
-    ],
+    allProperties: [],
     selectedProperties: [],
 };
 

@@ -47,7 +47,7 @@ function PropertyMap() {
     const [counter, setCounter] = useState(0);
 
     useEffect(() => {
-        if (selectedProperty === null) {
+        if (!selectedProperty) {
             setPosition(initialPosition);
             setZoom(initialZoom);
         } else {

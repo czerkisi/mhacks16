@@ -7,13 +7,12 @@ import axios from "axios";
 // Define the initial state for the Filter slice
 interface FilterState {
     address: string;
-    filterLoading: boolean;
     selectedProperty: Property | null;
+
 }
 
 const initialState: FilterState = {
     address: '',
-    filterLoading: false,
     selectedProperty: null,
 };
 
@@ -26,23 +25,7 @@ const filterSlice = createSlice({
         setAddress: (state, action: PayloadAction<string>) => {
             const address = action.payload;
             state.address = address;
-            state.filterLoading = true;
-            const requestBody = {
-                location: address,
-                k: 5,
-            };
-
-            console.log('setting address');
-
-            const apiUrl = 'http://127.0.0.1:5000/score';
-            axios.post(apiUrl, requestBody)
-                .then(response => {
-                    console.log('Response:', response.data);
-                    state.filterLoading = false;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+            // TODO
         },
         selectProperty: (state, action: PayloadAction<Property | null>) => {
             state.selectedProperty = action.payload;

@@ -1,6 +1,6 @@
 import './Home.css';
 
-import PropertyMap from "../Map/PropertyMap";
+import PropertyMap from "../PropertyMap/PropertyMap";
 import List from "../List/List";
 import Banner from "../Banner/Banner";
 

@@ -66,6 +66,13 @@ const AddressSearch: React.FC = () => {
         setResults([]);
     };
 
+    function submitAddress(){
+        if (searchAddress && searchAddress.length > 0){
+            dispatch(setAddress(searchAddress));
+            setSearchAddress('');
+        }
+    }
+
     return (
         <div className="address-search">
             <input
@@ -74,12 +81,19 @@ const AddressSearch: React.FC = () => {
                 value={searchAddress}
                 onChange={handleInputChange}
                 placeholder="Enter an address..."
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault(); // Prevents the default behavior
+                        submitAddress();
+                    }
+                }}
             />
+            <button onClick={submitAddress}>Search</button>
             <div className="results-list">
                 {isLoading &&
                     <span className={'loading'}>Loading...</span>
                 }
-                {!isLoading &&
+                {!isLoading && searchAddress.length > 0 &&
                     results.map((result: AddressResult) => (
                             <div
                                 key={result.place_id}
@@ -90,7 +104,7 @@ const AddressSearch: React.FC = () => {
                             </div>
                         ))}
                 {!isLoading && searchAddress.length > 1 && results.length === 0 &&
-                    <span className={'loading'}>No Results Found.</span>
+                    <span className={'no-suggestions'}>No Suggestions, Click Enter to Search</span>
                 }
             </div>
         </div>
