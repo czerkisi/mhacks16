@@ -34,7 +34,7 @@ const filterSlice = createSlice({
 
             console.log('setting address');
 
-            const apiUrl = 'http://localhost/score';
+            const apiUrl = 'http://127.0.0.1:5000/score';
             axios.post(apiUrl, requestBody)
                 .then(response => {
                     console.log('Response:', response.data);
