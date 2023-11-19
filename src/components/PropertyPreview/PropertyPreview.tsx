@@ -12,7 +12,6 @@ export default function PropertyPreview(props: PropertyPreviewProps){
     const dispatch = useAppDispatch();
 
     function selectThisProperty(){
-        console.log('selecting property');
         dispatch(selectProperty(property));
     }
 

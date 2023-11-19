@@ -1,6 +1,6 @@
 // FilterSlice.ts
 
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Property} from "./propertiesSlice";
 
 // Define the initial state for the Filter slice
@@ -23,14 +23,13 @@ const filterSlice = createSlice({
     reducers: {
         // Define a reducer to update the Filter value
         setAddress: (state, action: PayloadAction<string>) => {
-            const address = action.payload;
-            state.address = address;
+            state.address = action.payload;
             state.filterLoading = true;
             // fetch request
             //.then()
             state.filterLoading = false;
         },
-        selectProperty: (state, action: PayloadAction<Property>) => {
+        selectProperty: (state, action: PayloadAction<Property | null>) => {
             state.selectedProperty = action.payload;
             console.log('also selecting');
         }

@@ -19,7 +19,7 @@ interface CustomPropertyProps {
 
 export default function CustomPropertyPin(props: CustomPropertyProps){
     const property = props.property;
-    const selectedProper = useAppSelector(state => state.filter.selectedProperty);
+    const selectedProperty = useAppSelector(state => state.filter.selectedProperty);
     const onClick = props.onClick;
     const position = L.latLng([property.latitude, property.longitude]);
     const [image, setImage] = useState(buildingImage);

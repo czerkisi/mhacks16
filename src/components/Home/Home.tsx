@@ -1,6 +1,6 @@
 import './Home.css';
 
-import Map from "../Map/Map";
+import PropertyMap from "../Map/PropertyMap";
 import List from "../List/List";
 import Banner from "../Banner/Banner";
 
@@ -15,7 +15,7 @@ export default function Home(){
                     <List/>
                 </div>
                 <div className={'half-width'}>
-                    <Map/>
+                    <PropertyMap/>
                 </div>
             </div>
         </div>
