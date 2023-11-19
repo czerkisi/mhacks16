@@ -1,0 +1,28 @@
+.mission-statement {
+    /* investing in a greener tomorrow building sustainable futures, one property at a time. */
+    font-family: 'Helvetica', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 118px;
+}
+
+.greener-text {
+    background: linear-gradient(to right, green, lightgreen);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.white-text {
+    color: #FDFDFD;
+}
+
+.secondary-mission-statement {
+    font-family: 'Helvetica', serif;
+    font-style: normal;
+    font-size: 30px;
+}
+
+.banner-container {
+    margin: 15px;
+}

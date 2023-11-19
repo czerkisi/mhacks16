@@ -24,6 +24,8 @@
   "scripts": {
     "start": "react-scripts start",
     "start-apiw": "cd api && call venv\\Scripts\\activate && flask run --no-debugger",
+    "rebuild-startw": "npm run build && npm run start-apiw",
+    "rebuild-startm": "npm run build && npm run start-apim",
     "start-apim": "cd api && source venv/bin/activate && flask run --no-debugger",
     "build": "react-scripts build",
     "test": "react-scripts test",

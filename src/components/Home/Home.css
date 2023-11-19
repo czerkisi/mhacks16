@@ -1,0 +1,17 @@
+/* Basic styling for the full-screen container */
+.fill-screen {
+    height: 100vh; /* 100% of the viewport height */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for the half-height sections */
+.half-height {
+    flex: 1; /* Each half-height section takes up half of the available space */
+    display: flex;
+}
+
+/* Styling for the half-width sections within the second half-height section */
+.half-width {
+    flex: 1; /* Each half-width section takes up half of the available space */
+}
